@@ -137,4 +137,25 @@ public class GoogleAnalytics
 		}
 	}
 	
+	/** 
+	 * Tracks the main screen including the parameters used for display
+	 * @param context
+	 * @param page
+	 * @param stat
+	 * @param from
+	 * @param to
+	 * @param sort
+	 */
+	public void trackStats(Context context, String page, int stat, String from, String to, int sort)
+	{
+		if ((m_tracker != null) && m_bActive )
+		{
+			m_tracker.trackPageView(page 
+					+ StatsProvider.getInstance(context).statToUrl(stat)
+					+ "From" + from
+					+ "To" + to
+					+ "Sort" + sort);
+		}
+	}
+	
 }
